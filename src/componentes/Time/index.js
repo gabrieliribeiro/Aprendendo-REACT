@@ -5,10 +5,15 @@ const Time = (props) => {
     // fiz os estilos de dois jeitos como mostrado no vídeo para ter uma anotação
     const css = { backgroundColor: props.corSecundaria}
     return(
-        <section className='time' style={css}>
+        (props.colaboradores.length > 0) ? <section className='time' style={css}>
             <h3 style={{borderColor: props.corPrimaria}}>{props.nome}</h3>
-            {props.colaboradores.map(colaborador => <Colaborador/>)}   
-        </section>
+            <div className='colaboradores'>
+                {props.colaboradores.map(colaborador => <Colaborador corDeFundo={props.corPrimaria} key={colaborador.nome}
+                nome={colaborador.nome}
+                cargo ={colaborador.cargo}
+                imagem={colaborador.imagem}/>)}
+            </div>   
+        </section>:""
     )
 }
 
